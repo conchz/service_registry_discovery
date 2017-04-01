@@ -1,5 +1,4 @@
 FROM nginx:1.10.3
-MAINTAINER Zongzhi Bai <dolphineor@gmail.com>
 
 RUN DEBIAN_FRONTEND=noninteractive \
     apt-get update -qq && \

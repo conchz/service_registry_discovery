@@ -1,6 +1,8 @@
 # service_registry_discovery
 
-REFERENCE_DOCUMENT: [使用Docker、Registrator、Consul、Consul Template和Nginx实现高可扩展的Web框架 - DockOne.io](http://dockone.io/article/272)
+#### REFERENCE_DOCUMENT
+1. [使用Docker、Registrator、Consul、Consul Template和Nginx实现高可扩展的Web框架 - DockOne.io](http://dockone.io/article/272)
+2. [Consul + Consul-Template with Docker-Compose](http://blog.neilni.com/2015/09/14/consul-and-consul-template-with-docker-compose/)
 
 #### Install Consul
 ``` docker run -d --name=consul1 --hostname=node1 -p 8400:8400 -p 8500:8500 -p 8600:53/udp progrium/consul -server -bootstrap -advertise $YOUR_IP -ui-dir /ui ```
