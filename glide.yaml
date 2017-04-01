@@ -1,0 +1,7 @@
+package: github.com/lavenderx/service_registry_discovery
+license: MIT
+import:
+- package: github.com/labstack/echo
+  version: ^3.0.3
+  subpackages:
+  - '...'

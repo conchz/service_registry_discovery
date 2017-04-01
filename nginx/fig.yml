@@ -1,0 +1,36 @@
+app:
+  image: tutum/hello-world:latest
+  environment:
+    SERVICE_NAME: app
+    SERVICE_TAGS: production
+    SERVICE_80_NAME: http
+    SERVICE_80_CHECK_HTTP: .
+    SERVICE_80_CHECK_INTERVAL: 15s
+  ports:
+  - "80"
+
+lb:
+  build: ./
+  links:
+  - consul
+  ports:
+  - "80:80"
+
+consul:
+  command: -server -bootstrap -advertise 10.0.2.15
+  image: progrium/consul:latest
+  ports:
+  - "8300:8300"
+  - "8400:8400"
+  - "8500:8500"
+  - "8600:53/udp"
+  volumes:
+  - "/var/run/docker.sock:/tmp/docker.sock"
+
+registrator:
+  command: consul://consul:8500
+  image: progrium/registrator:latest
+  links:
+  - consul
+  volumes:
+  - "/var/run/docker.sock:/tmp/docker.sock"
